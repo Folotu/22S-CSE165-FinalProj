@@ -6,6 +6,8 @@
 #include <QGraphicsItem>
 #include <QTimer>
 #include <QVector>
+#include <QMediaPlayer>
+#include <QAudioOutput>
 
 
 /* Predefine the game object */
@@ -64,6 +66,9 @@ private:
 
     QVector<QPixmap> anim[4];   // animations
     int anim_index;
+
+    QMediaPlayer* player = nullptr;
+    QAudioOutput* audioOutput = nullptr;
 };
 
 
