@@ -14,50 +14,50 @@ Ghost::Ghost(int clr) : GameObject(
 
     switch (color) {
     case Red:
-        anim[Right].push_back(QPixmap(":/game_objects/ghosts/redright1.png"));
-        anim[Right].push_back(QPixmap(":/game_objects/ghosts/redright2.png"));
-        anim[Up].push_back(QPixmap(":/game_objects/ghosts/redup1.png"));
-        anim[Up].push_back(QPixmap(":/game_objects/ghosts/redup2.png"));
-        anim[Left].push_back(QPixmap(":/game_objects/ghosts/redleft1.png"));
-        anim[Left].push_back(QPixmap(":/game_objects/ghosts/redleft2.png"));
-        anim[Down].push_back(QPixmap(":/game_objects/ghosts/reddown1.png"));
-        anim[Down].push_back(QPixmap(":/game_objects/ghosts/reddown2.png"));
+        anim[Right].push_back(QPixmap(":/game_objects/ghosts/amongRedRight1.png"));
+        anim[Right].push_back(QPixmap(":/game_objects/ghosts/amongRedRight2.png"));
+        anim[Up].push_back(QPixmap(":/game_objects/ghosts/amongRedUp1.png"));
+        anim[Up].push_back(QPixmap(":/game_objects/ghosts/amongRedUp2.png"));
+        anim[Left].push_back(QPixmap(":/game_objects/ghosts/amongRedLeft1.png"));
+        anim[Left].push_back(QPixmap(":/game_objects/ghosts/amongRedLeft2.png"));
+        anim[Down].push_back(QPixmap(":/game_objects/ghosts/amongRedDown1.png"));
+        anim[Down].push_back(QPixmap(":/game_objects/ghosts/amongRedDown2.png"));
         break;
     case Yellow:
-        anim[Right].push_back(QPixmap(":/game_objects/ghosts/yellowright1.png"));
-        anim[Right].push_back(QPixmap(":/game_objects/ghosts/yellowright2.png"));
-        anim[Up].push_back(QPixmap(":/game_objects/ghosts/yellowup1.png"));
-        anim[Up].push_back(QPixmap(":/game_objects/ghosts/yellowup2.png"));
-        anim[Left].push_back(QPixmap(":/game_objects/ghosts/yellowleft1.png"));
-        anim[Left].push_back(QPixmap(":/game_objects/ghosts/yellowleft2.png"));
-        anim[Down].push_back(QPixmap(":/game_objects/ghosts/yellowdown1.png"));
-        anim[Down].push_back(QPixmap(":/game_objects/ghosts/yellowdown2.png"));
+        anim[Right].push_back(QPixmap(":/game_objects/ghosts/amongOrangeRight1.png"));
+        anim[Right].push_back(QPixmap(":/game_objects/ghosts/amongOrangeRight2.png"));
+        anim[Up].push_back(QPixmap(":/game_objects/ghosts/amongOrangeUp1.png"));
+        anim[Up].push_back(QPixmap(":/game_objects/ghosts/amongOrangeUp2.png"));
+        anim[Left].push_back(QPixmap(":/game_objects/ghosts/amongOrangeLeft2.png"));
+        anim[Left].push_back(QPixmap(":/game_objects/ghosts/amongOrangeLeft2.png"));
+        anim[Down].push_back(QPixmap(":/game_objects/ghosts/amongOrangeDown1.png"));
+        anim[Down].push_back(QPixmap(":/game_objects/ghosts/amongOrangeDown2.png"));
         break;
     case Green:
-        anim[Right].push_back(QPixmap(":/game_objects/ghosts/greenright1.png"));
-        anim[Right].push_back(QPixmap(":/game_objects/ghosts/greenright2.png"));
-        anim[Up].push_back(QPixmap(":/game_objects/ghosts/greenup1.png"));
-        anim[Up].push_back(QPixmap(":/game_objects/ghosts/greenup2.png"));
-        anim[Left].push_back(QPixmap(":/game_objects/ghosts/greenleft1.png"));
-        anim[Left].push_back(QPixmap(":/game_objects/ghosts/greenleft2.png"));
-        anim[Down].push_back(QPixmap(":/game_objects/ghosts/greendown1.png"));
-        anim[Down].push_back(QPixmap(":/game_objects/ghosts/greendown2.png"));
+        anim[Right].push_back(QPixmap(":/game_objects/ghosts/amongGreenRight1.png"));
+        anim[Right].push_back(QPixmap(":/game_objects/ghosts/amongGreenRight2.png"));
+        anim[Up].push_back(QPixmap(":/game_objects/ghosts/amongGreenUp1.png"));
+        anim[Up].push_back(QPixmap(":/game_objects/ghosts/amongGreenUp2.png"));
+        anim[Left].push_back(QPixmap(":/game_objects/ghosts/amongGreenLeft1.png"));
+        anim[Left].push_back(QPixmap(":/game_objects/ghosts/amongGreenLeft2.png"));
+        anim[Down].push_back(QPixmap(":/game_objects/ghosts/amongGreenDown1.png"));
+        anim[Down].push_back(QPixmap(":/game_objects/ghosts/amongGreenDown2.png"));
         break;
     case Pink:
-        anim[Right].push_back(QPixmap(":/game_objects/ghosts/pinkright1.png"));
-        anim[Right].push_back(QPixmap(":/game_objects/ghosts/pinkright2.png"));
-        anim[Up].push_back(QPixmap(":/game_objects/ghosts/pinkup1.png"));
-        anim[Up].push_back(QPixmap(":/game_objects/ghosts/pinkup2.png"));
-        anim[Left].push_back(QPixmap(":/game_objects/ghosts/pinkleft1.png"));
-        anim[Left].push_back(QPixmap(":/game_objects/ghosts/pinkleft2.png"));
-        anim[Down].push_back(QPixmap(":/game_objects/ghosts/pinkdown1.png"));
-        anim[Down].push_back(QPixmap(":/game_objects/ghosts/pinkdown2.png"));
+        anim[Right].push_back(QPixmap(":/game_objects/ghosts/amongPinkRight1.png"));
+        anim[Right].push_back(QPixmap(":/game_objects/ghosts/amongPinkRight2.png"));
+        anim[Up].push_back(QPixmap(":/game_objects/ghosts/amongPinkUp1.png"));
+        anim[Up].push_back(QPixmap(":/game_objects/ghosts/amongPinkUp2.png"));
+        anim[Left].push_back(QPixmap(":/game_objects/ghosts/amongPinkLeft1.png"));
+        anim[Left].push_back(QPixmap(":/game_objects/ghosts/amongPinkLeft2.png"));
+        anim[Down].push_back(QPixmap(":/game_objects/ghosts/amongPinkDown1.png"));
+        anim[Down].push_back(QPixmap(":/game_objects/ghosts/amongPinkDown2.png"));
         break;
     }
 
-    panic_anim.push_back(QPixmap(":/game_objects/ghosts/bl1.png"));
-    panic_anim.push_back(QPixmap(":/game_objects/ghosts/bl2.png"));
-    running_anim.push_back(QPixmap(":/game_objects/ghosts/run.png"));
+    panic_anim.push_back(QPixmap(":/game_objects/ghosts/blueGhost1.png"));
+    panic_anim.push_back(QPixmap(":/game_objects/ghosts/blueGhost2.png"));
+    running_anim.push_back(QPixmap(":/game_objects/ghosts/runEyes.png"));
     setPixmap(anim[Right][0]);
 }
 
@@ -577,7 +577,6 @@ void Ghost::go_to_cage()
         }
     }
 }
-
 
 void Ghost::move()
 {
