@@ -102,18 +102,20 @@ void Pacman::moveright()
 
 void Pacman::eat_ball(int __y, int __x)
 {
-    player->setSource(QUrl("qrc:/audio/pacman_chomp.wav"));
-    qDebug() << player->source();
-    player->play();
+
     GameObject *obj = game->map[__y][__x];
     switch (obj->get_type()) {
     case Ball:
         game->score += obj->get_score();
         game->ball_num--;
+        player->setSource(QUrl("qrc:/audio/AmongUsTask_complete.wav"));
+        player->play();
         break;
     case PowerBall:
         game->score += obj->get_score();
         game->ball_num--;
+        player->setSource(QUrl("qrc:/audio/AmongUSPowerUp.wav"));
+        player->play();
         for (int i = 0; i < game->powerball.size(); i++) {
             if (game->powerball.at(i) == obj) {
                 game->powerball.remove(i);
@@ -126,6 +128,7 @@ void Pacman::eat_ball(int __y, int __x)
                 game->ghost[i]->status = Ghost::Panic;
                 game->ghost[i]->panic_time = PANNIC_TIME;
                 game->ghost_timer[i]->setInterval(PANNIC_INTERVAL);
+
             }
         }
         break;
@@ -135,6 +138,7 @@ void Pacman::eat_ball(int __y, int __x)
 
     /* Pacman eat a ball, and
      * fill the previous block with blank. */
+
     QPixmap blankpix;
     game->map[_y][_x] = new GameObject(GameObject::Blank, blankpix);
     game->map[__y][__x] = this;

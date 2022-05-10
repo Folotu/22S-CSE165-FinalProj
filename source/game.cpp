@@ -2,33 +2,30 @@
 #include <QString>
 #include <QFile>
 #include <QRandomGenerator>
+#include <iostream>
+#include <string>
 #define W (GameObject::Width)
 
 
 // interval number before ghosts going out the cage
 int GHOST_RELEASE_TIME[] = {0, 200, 400, 600};
-static int gg;
+
 Game::Game(int x, int y, int map_w, int map_h, QString map_src)
     : QGraphicsScene(x, y, W * map_w, W * map_h)
 {   
+     //derr = map_src;
+
+    std::cout << x << " "<< y << " "<< map_w << " " << map_h << " " << std::endl;
     geo_x = x;
     geo_y = y;
     stat = Playing;
-
     player = new QMediaPlayer(this);
-    audioOutput = new QAudioOutput(this);
-    player->setAudioOutput(audioOutput);
-      player->setSource(QUrl("qrc:/audio/AmongUStrapTheme.mp3"));
+    audioOutput23 = new QAudioOutput(this);
+    player->setAudioOutput(audioOutput23);
+//    connect(player, &QMediaPlayer::positionChanged, this, &MainWindow::on_positionChanged):
+//    connect(player, &QMediaPlayer::durationChanged, this, 6Dialog::on durationChanged);
+
 //    qDebug() << player->source();
-      audioOutput->setVolume(2);
-     player->play();
-
-    gg = 0;
-    if (gg == 0)
-    {
-     player->loops();
-
-    }
 
 
     /* Initialize map pointers */
@@ -127,9 +124,13 @@ Game::Game(int x, int y, int map_w, int map_h, QString map_src)
     ghost[Ghost::Yellow]->chase_strategy = &strategy4;
 }
 
-
 void Game::start()
 {
+    player->setSource(QUrl("qrc:/audio/AmongUStrapTheme.wav"));
+
+    player->setLoops(-1);
+    player->play();
+
     powerball_flash_timer = new QTimer(this);
     connect(powerball_flash_timer, SIGNAL(timeout()), this , SLOT(powerball_flash()));
     powerball_flash_timer->start(FLASH_INTERVAL);
@@ -149,11 +150,13 @@ void Game::start()
 
 void Game::stop()
 {
+    player->stop();
     pacman_timer->stop();
     powerball_flash_timer->stop();
     for (int i = 0; i < Ghost::GhostNum; i++) {
         ghost_timer[i]->stop();
     }
+
 }
 
 
@@ -210,7 +213,6 @@ int Game::get_score()
 
 Game::~Game()
 {
-    gg = 1;
     for (int i = 0; i < map_height; i++) {
         for (int j = 0; j < map_width; j++) {
             if (map[i][j] != nullptr)

@@ -5,6 +5,8 @@
 #include <QLabel>
 #include <QKeyEvent>
 #include <QTimer>
+#include <QMediaPlayer>
+#include <QAudioOutput>
 #include "game.h"
 
 QT_BEGIN_NAMESPACE
@@ -20,9 +22,15 @@ public:
     ~MainWindow();
     void initLabels();
     void keyPressEvent(QKeyEvent*) override;
+    void on_durationChanged(qint64 position);
+    void on_positionChanged(qint64 position);
 
 private slots:
     void update_score();
+
+    void on_VolumeSlider_sliderMoved(int position);
+
+    void on_pushButton_released();
 
 private:
     Ui::MainWindow *ui;
@@ -30,5 +38,7 @@ private:
     QLabel *win_label, *lose_label;
     QTimer *score_timer;
     Game *game;
+    QMediaPlayer* player = nullptr;
+    QAudioOutput* audioOutput = nullptr;
 };
 #endif // MAINWINDOW_H

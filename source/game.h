@@ -45,12 +45,14 @@ public:
 
     friend class Pacman;
     friend class Ghost;
-
+    static inline QAudioOutput* audioOutput23 = nullptr;
+    //static QString derr;
 
 private slots:
     void pacman_handler();
     void powerball_flash();
     void ghost_handler(int);
+
 
 private:
     int map_height, map_width;      // game map (20 x 29 in this app)
@@ -63,7 +65,7 @@ private:
     QTimer *powerball_flash_timer;
     bool flash_tick;
     QMediaPlayer* player = nullptr;
-    QAudioOutput* audioOutput = nullptr;
+
 
 };
 

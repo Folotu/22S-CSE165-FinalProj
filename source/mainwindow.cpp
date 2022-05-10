@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include "game.h"
+#include <iostream>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -22,7 +23,19 @@ MainWindow::MainWindow(QWidget *parent)
     game = new Game(x, y, map_width, map_height, ":/game_objects/map_objects/map.txt");
     ui->graphicsView->setScene(game);
     initLabels();
-    game->start();
+
+
+//   player = new QMediaPlayer(this);
+//   audioOutput = new QAudioOutput(this);
+//   player->setAudioOutput(audioOutput);
+
+//   //player->setSource(QUrl::fromLocalFile("C:/Users/olotu/Downloads/Fucked Up.mp3"));
+//   player->setSource(QUrl("qrc:/audio/pacman_beginning.wav"));
+//   qDebug() << player->source();
+//   player->play();
+//   player->setLoops(4);
+game->start();
+
 }
 
 
@@ -93,5 +106,23 @@ void MainWindow::keyPressEvent(QKeyEvent *e) {
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_VolumeSlider_sliderMoved(int position)
+{
+    std::cout << position << std::endl;
+    double temp = position / 100.0;
+     std::cout << temp << std::endl;
+     Game::audioOutput23->volumeChanged(temp);
+
+}
+
+
+void MainWindow::on_pushButton_released()
+{
+
+//Game::Game(1, 1, 6, 7, "map_src");
+    //Game(50, 50, 29, 20, derr);
+
 }
 
