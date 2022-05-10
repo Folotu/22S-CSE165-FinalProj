@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent)
 //   player->setAudioOutput(audioOutput);
 
 //   //player->setSource(QUrl::fromLocalFile("C:/Users/olotu/Downloads/Fucked Up.mp3"));
-//   player->setSource(QUrl("qrc:/audio/pacman_beginning.wav"));
+//   player->setSource(QUrl("qrc:/audio/sheriff_beginning.wav"));
 //   qDebug() << player->source();
 //   player->play();
 //   player->setLoops(4);
@@ -88,16 +88,16 @@ void MainWindow::update_score()
 void MainWindow::keyPressEvent(QKeyEvent *e) {
     switch (e->key()) {
     case Qt::Key_W:
-        game->pacman_next_direction(GameObject::Up);
+        game->sheriff_next_direction(GameObject::Up);
         break;
     case Qt::Key_A:
-        game->pacman_next_direction(GameObject::Left);
+        game->sheriff_next_direction(GameObject::Left);
         break;
     case Qt::Key_S:
-        game->pacman_next_direction(GameObject::Down);
+        game->sheriff_next_direction(GameObject::Down);
         break;
     case Qt::Key_D:
-        game->pacman_next_direction(GameObject::Right);
+        game->sheriff_next_direction(GameObject::Right);
         break;
     }
 }

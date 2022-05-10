@@ -21,8 +21,8 @@
 
 0 ball
 1 wall
-2 gate          (only one)
-p pacman        (only one)
-g ghost         (only four)
+2 cell          (only one)
+p sheriff        (only one)
+g amongChar         (only four)
 3 blank
 4 power ball

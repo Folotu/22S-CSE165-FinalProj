@@ -13,10 +13,10 @@ SOURCES += \
     source/chasing_strategy.cpp \
     source/game.cpp \
     source/game_object.cpp \
-    source/ghost.cpp \
+    source/imposter.cpp \
     source/main.cpp \
     source/mainwindow.cpp \
-    source/pacman.cpp
+    source/sheriff.cpp
 
 HEADERS += \
     source/game.h \
@@ -33,4 +33,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     audioresources.qrc \
-    resources.qrc
+    resource.qrc

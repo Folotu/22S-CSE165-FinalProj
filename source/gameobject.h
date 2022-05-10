@@ -14,11 +14,11 @@
 class Game;
 
 
-/* Base class of ghosts, pacman */
+/* Base class of amongChars, sheriff */
 class GameObject : public QGraphicsPixmapItem
 {
 public:
-    enum ObjectType {Ball, Wall, Gate, Pacman, Ghost, Blank, PowerBall};
+    enum ObjectType {Ball, Wall, Gate, Sheriff, AmongChar, Blank, PowerBall};
     enum Dir {Up = 0, Down = 1, Left = 2, Right = 3, Stop = 4};
     static const int Width = 20;      // game object size by pixel
 
@@ -35,7 +35,7 @@ public:
     Dir get_next_dir();
 
     friend class Game;
-    friend class Ghost;
+    friend class AmongChar;
 
 protected:
     int _x, _y;                 // coordinate in map
@@ -46,13 +46,13 @@ protected:
 };
 
 
-/* Pacman */
-class Pacman : public GameObject
+/* Sheriff */
+class Sheriff : public GameObject
 {
 public:
-    Pacman();
+    Sheriff();
     void move();
-    Game *game;                 // the pacman game object
+    Game *game;                 // the pac-man game object
 
     friend class Game;
 
@@ -62,7 +62,7 @@ private:
     void moveleft();
     void moveright();
     void eat_ball(int, int);
-    bool overlapable(int, int); // check if pacman can go to map[i][j]
+    bool overlapable(int, int); // check if sheriff can go to map[i][j]
 
     QVector<QPixmap> anim[4];   // animations
     int anim_index;
@@ -72,21 +72,21 @@ private:
 };
 
 
-/* Ghost */
-class Ghost : public GameObject
+/* AmongChar */
+class AmongChar : public GameObject
 {
 public:
     enum Color {Red = 0, Yellow = 1, Pink = 2, Green = 3};
     enum Status {Normal, Panic, Running};
-    const static int GhostNum = 4;
-    Game *game;                 // the pacman game object
+    const static int amongCharNum = 4;
+    Game *game;                 // the sheriff game object
 
-    Ghost(int);
+    AmongChar(int);
     void move();
     Color get_color();
 
     friend class Game;
-    friend class Pacman;
+    friend class Sheriff;
 
 private:
     void moveup();
@@ -95,12 +95,12 @@ private:
     void moveright();
 
     void setdir_randomly();
-    void go_out_cage();
-    void chase_pacman();
-    void dodge_pacman();
-    void go_to_cage();
-    QPair<int, int> (*chase_strategy)(Ghost*);  // function pointer of a chasing stragety
-    bool overlapable(int, int);                 // check if ghost can go to map[i][j]
+    void go_out_cell();
+    void chase_sheriff();
+    void dodge_sheriff();
+    void go_to_cell();
+    QPair<int, int> (*chase_strategy)(AmongChar*);  // function pointer of a chasing stragety
+    bool overlapable(int, int);                 // check if amongChar can go to map[i][j]
 
     Color color;
     Status status;
@@ -114,12 +114,12 @@ private:
 };
 
 
-/* Chasing strategies of ghosts,
+/* Chasing strategies of amongChars,
  * which is represented as a QPair of vector
- * from the ghost to the pacman. */
-QPair<int, int> strategy1(Ghost*);
-QPair<int, int> strategy2(Ghost*);
-QPair<int, int> strategy3(Ghost*);
-QPair<int, int> strategy4(Ghost*);
+ * from the amongChar to the Sheriff. */
+QPair<int, int> strategy1(AmongChar*);
+QPair<int, int> strategy2(AmongChar*);
+QPair<int, int> strategy3(AmongChar*);
+QPair<int, int> strategy4(AmongChar*);
 
 #endif // GAMEOBJECT_H

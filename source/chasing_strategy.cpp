@@ -1,18 +1,18 @@
 #include "game.h"
 
 
-QPair<int, int> strategy1(Ghost* ghost) {
-    Pacman *pacman = ghost->game->pacman;
-    int dist_x = pacman->get_x() - ghost->get_x();
-    int dist_y = pacman->get_y() - ghost->get_y();
+QPair<int, int> strategy1(AmongChar* amongChar) {
+    Sheriff *sheriff = amongChar->game->sheriff;
+    int dist_x = sheriff->get_x() - amongChar->get_x();
+    int dist_y = sheriff->get_y() - amongChar->get_y();
     return QPair<int, int>(dist_x, dist_y);
 }
 
-QPair<int, int> strategy2(Ghost* ghost) {
-    Pacman *pacman = ghost->game->pacman;
-    int dist_x = pacman->get_x() - ghost->get_x();
-    int dist_y = pacman->get_y() - ghost->get_y();
-    switch(pacman->get_dir()) {
+QPair<int, int> strategy2(AmongChar* amongChar) {
+    Sheriff *sheriff = amongChar->game->sheriff;
+    int dist_x = sheriff->get_x() - amongChar->get_x();
+    int dist_y = sheriff->get_y() - amongChar->get_y();
+    switch(sheriff->get_dir()) {
     case GameObject::Up:
         dist_y-=4;
         break;
@@ -31,21 +31,21 @@ QPair<int, int> strategy2(Ghost* ghost) {
     return QPair<int, int>(dist_x, dist_y);
 }
 
-QPair<int, int> strategy3(Ghost* ghost) {
-    Pacman *pacman = ghost->game->pacman;
-    Ghost *red_ghost = ghost->game->ghost[Ghost::Red];
-    int dist_x = (pacman->get_x() - red_ghost->get_x()) * 2 - ghost->get_x();
-    int dist_y = (pacman->get_y() - red_ghost->get_y()) * 2 - ghost->get_y();
+QPair<int, int> strategy3(AmongChar* amongChar) {
+    Sheriff *sheriff = amongChar->game->sheriff;
+    AmongChar *red_amongChar = amongChar->game->amongChar[AmongChar::Red];
+    int dist_x = (sheriff->get_x() - red_amongChar->get_x()) * 2 - amongChar->get_x();
+    int dist_y = (sheriff->get_y() - red_amongChar->get_y()) * 2 - amongChar->get_y();
     return QPair<int, int>(dist_x, dist_y);
 }
 
-QPair<int, int> strategy4(Ghost* ghost) {
-    Pacman *pacman = ghost->game->pacman;
-    int dist_x = pacman->get_x() - ghost->get_x();
-    int dist_y = pacman->get_y() - ghost->get_y();
+QPair<int, int> strategy4(AmongChar* AmongChar) {
+    Sheriff *sheriff = AmongChar->game->sheriff;
+    int dist_x = sheriff->get_x() - AmongChar->get_x();
+    int dist_y = sheriff->get_y() - AmongChar->get_y();
     if (dist_x * dist_x + dist_y * dist_y < 64) {
-        dist_x = 2 - ghost->get_x();
-        dist_y = 2 - ghost->get_y();
+        dist_x = 2 - AmongChar->get_x();
+        dist_y = 2 - AmongChar->get_y();
     }
     return QPair<int, int>(dist_x, dist_y);
 }

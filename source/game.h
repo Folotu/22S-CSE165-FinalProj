@@ -14,12 +14,12 @@
 /* Changeable game options */
 #define BALL_SCORE      10          // score of balls
 #define POWERBALL_SCORE 30          // score of powerballs
-#define GHOST_SCORE     50          // score of ghosts
-#define INTERVAL        10          // move interval of pacman
-#define NORMAL_INTERVAL 10          // move interval of normal ghosts
-#define PANNIC_INTERVAL 15          // move interval of pannic ghosts
-#define RUNNING_INTERVAL 5          // move interval of running ghosts
-#define PANNIC_TIME     1000        // interval number of pannic ghosts
+#define AMONGCHAR_SCORE     50          // score of amongUsCharacters
+#define INTERVAL        10          // move interval of sheriff
+#define NORMAL_INTERVAL 10          // move interval of normal amongUsCharacters
+#define PANNIC_INTERVAL 15          // move interval of pannic amongUsCharacters
+#define RUNNING_INTERVAL 5          // move interval of running amongUsCharacters
+#define PANNIC_TIME     1000        // interval number of pannic amongUsCharacters
 #define FLASH_INTERVAL 200          // flash interval of powerballs
 
 /* Game control class */
@@ -33,25 +33,25 @@ public:
     ~Game();
     void start();
     void stop();
-    void pacman_next_direction(GameObject::Dir);
+    void sheriff_next_direction(GameObject::Dir);
     int get_score();
 
-    GameObject ***map;              // the map of pacman game
-    GameObject *gate;               // pointer of the gate of cage of ghosts
-    Pacman *pacman;                 // pointer of pacman
-    Ghost *ghost[Ghost::GhostNum];  // pointers of ghosts
+    GameObject ***map;              // the map of pac-man game
+    GameObject *gate;               // pointer of the gate of cage of amongUsCharacters
+    Sheriff *sheriff;                 // pointer of Sheriff
+    AmongChar *amongChar[AmongChar::amongCharNum];  // pointers of amongUsCharacters
     QVector<GameObject*> powerball; // pointers of powerball
     GameStatus stat;
 
-    friend class Pacman;
-    friend class Ghost;
+    friend class Sheriff;
+    friend class AmongChar;
     static inline QAudioOutput* audioOutput23 = nullptr;
     //static QString derr;
 
 private slots:
-    void pacman_handler();
+    void sheriff_handler();
     void powerball_flash();
-    void ghost_handler(int);
+    void amongChar_handler(int);
 
 
 private:
@@ -60,8 +60,8 @@ private:
     int ball_num, eat_num, score;
     int geo_x, geo_y;               // geometric coordinate
 
-    QTimer *ghost_timer[Ghost::GhostNum];
-    QTimer *pacman_timer;
+    QTimer *amongChar_timer[AmongChar::amongCharNum];
+    QTimer *sheriff_timer;
     QTimer *powerball_flash_timer;
     bool flash_tick;
     QMediaPlayer* player = nullptr;

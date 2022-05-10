@@ -6,54 +6,5 @@
         <file>game_objects/map_objects/map.txt</file>
         <file>game_objects/map_objects/power_ball.png</file>
         <file>game_objects/map_objects/wall.png</file>
-        <file>game_objects/ghosts/amongRedDown1.png</file>
-        <file>game_objects/ghosts/amongRedDown2.png</file>
-        <file>game_objects/ghosts/amongRedLeft1.png</file>
-        <file>game_objects/ghosts/amongRedLeft2.png</file>
-        <file>game_objects/ghosts/amongRedRight1.png</file>
-        <file>game_objects/ghosts/amongRedRight2.png</file>
-        <file>game_objects/ghosts/amongRedUp1.png</file>
-        <file>game_objects/ghosts/amongRedUp2.png</file>
-        <file>game_objects/ghosts/amongGreenDown1.png</file>
-        <file>game_objects/ghosts/amongGreenDown2.png</file>
-        <file>game_objects/ghosts/amongGreenLeft1.png</file>
-        <file>game_objects/ghosts/amongGreenLeft2.png</file>
-        <file>game_objects/ghosts/amongGreenRight1.png</file>
-        <file>game_objects/ghosts/amongGreenRight2.png</file>
-        <file>game_objects/ghosts/amongGreenUp1.png</file>
-        <file>game_objects/ghosts/amongGreenUp2.png</file>
-        <file>game_objects/ghosts/amongOrangeDown1.png</file>
-        <file>game_objects/ghosts/amongOrangeDown2.png</file>
-        <file>game_objects/ghosts/amongOrangeLeft1.png</file>
-        <file>game_objects/ghosts/amongOrangeLeft2.png</file>
-        <file>game_objects/ghosts/amongOrangeRight1.png</file>
-        <file>game_objects/ghosts/amongOrangeRight2.png</file>
-        <file>game_objects/ghosts/amongOrangeUp1.png</file>
-        <file>game_objects/ghosts/amongOrangeUp2.png</file>
-        <file>game_objects/ghosts/amongPinkDown1.png</file>
-        <file>game_objects/ghosts/amongPinkDown2.png</file>
-        <file>game_objects/ghosts/amongPinkLeft1.png</file>
-        <file>game_objects/ghosts/amongPinkLeft2.png</file>
-        <file>game_objects/ghosts/amongPinkRight1.png</file>
-        <file>game_objects/ghosts/amongPinkRight2.png</file>
-        <file>game_objects/ghosts/amongPinkUp1.png</file>
-        <file>game_objects/ghosts/amongPinkUp2.png</file>
-        <file>game_objects/ghosts/blueGhost1.png</file>
-        <file>game_objects/ghosts/blueGhost2.png</file>
-        <file>game_objects/ghosts/runEyes.png</file>
-        <file>game_objects/pacman/down1.png</file>
-        <file>game_objects/pacman/down2.png</file>
-        <file>game_objects/pacman/down3.png</file>
-        <file>game_objects/pacman/left1.png</file>
-        <file>game_objects/pacman/left2.png</file>
-        <file>game_objects/pacman/left3.png</file>
-        <file>game_objects/pacman/right1.png</file>
-        <file>game_objects/pacman/right2.png</file>
-        <file>game_objects/pacman/right3.png</file>
-        <file>game_objects/pacman/sheriff.png</file>
-        <file>game_objects/pacman/sheriff2.png</file>
-        <file>game_objects/pacman/up1.png</file>
-        <file>game_objects/pacman/up2.png</file>
-        <file>game_objects/pacman/up3.png</file>
     </qresource>
 </RCC>

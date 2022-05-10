@@ -7,8 +7,8 @@
 #define W (GameObject::Width)
 
 
-// interval number before ghosts going out the cage
-int GHOST_RELEASE_TIME[] = {0, 200, 400, 600};
+// interval number before amongChars going out the cage
+int amongChar_RELEASE_TIME[] = {0, 200, 400, 600};
 
 Game::Game(int x, int y, int map_w, int map_h, QString map_src)
     : QGraphicsScene(x, y, W * map_w, W * map_h)
@@ -41,7 +41,7 @@ Game::Game(int x, int y, int map_w, int map_h, QString map_src)
 
     /* Initialize map graphics */
     ball_num = eat_num = score = 0;
-    int ghost_i = 0;
+    int amongChar_i = 0;
     QPixmap wallpix(":/game_objects/map_objects/wall.png");
     QPixmap ballpix(":/game_objects/map_objects/dot.png");
     QPixmap powerballpix(":/game_objects/map_objects/power_ball.png");
@@ -50,7 +50,7 @@ Game::Game(int x, int y, int map_w, int map_h, QString map_src)
     QFile mapfile(map_src);
     mapfile.open(QIODevice::ReadOnly|QIODevice::Text);
 
-    pacman = new Pacman();
+    sheriff = new Sheriff();
 
     for (int i = 0; i < map_h; i++) {
         QByteArray line = mapfile.readLine();
@@ -90,25 +90,25 @@ Game::Game(int x, int y, int map_w, int map_h, QString map_src)
                 map[i][j] = gate;
                 break;
             case 'p':
-                pacman = new Pacman();
-                pacman->game = this;
-                pacman->setZValue(2);
-                pacman->setPos(tmp_x, tmp_y);
-                addItem(pacman);
-                map[i][j] = pacman;
+                sheriff = new Sheriff();
+                sheriff->game = this;
+                sheriff->setZValue(2);
+                sheriff->setPos(tmp_x, tmp_y);
+                addItem(sheriff);
+                map[i][j] = sheriff;
                 break;
             case 'g':
                 map[i][j] = new GameObject(GameObject::Blank, blankpix);
-                ghost[ghost_i] = new Ghost(ghost_i);
-                ghost[ghost_i]->game = this;
-                ghost[ghost_i]->setZValue(2);
-                ghost[ghost_i]->release_time = GHOST_RELEASE_TIME[ghost_i];
-                ghost[ghost_i]->_x = j;
-                ghost[ghost_i]->_y = i;
-                ghost[ghost_i]->set_score(GHOST_SCORE);
-                ghost[ghost_i]->setPos(tmp_x, tmp_y);
-                addItem(ghost[ghost_i]);
-                ghost_i++;
+                amongChar[amongChar_i] = new AmongChar(amongChar_i);
+                amongChar[amongChar_i]->game = this;
+                amongChar[amongChar_i]->setZValue(2);
+                amongChar[amongChar_i]->release_time = amongChar_RELEASE_TIME[amongChar_i];
+                amongChar[amongChar_i]->_x = j;
+                amongChar[amongChar_i]->_y = i;
+                amongChar[amongChar_i]->set_score(AMONGCHAR_SCORE);
+                amongChar[amongChar_i]->setPos(tmp_x, tmp_y);
+                addItem(amongChar[amongChar_i]);
+                amongChar_i++;
                 break;
             }
             if (map[i][j]) {
@@ -118,10 +118,10 @@ Game::Game(int x, int y, int map_w, int map_h, QString map_src)
         }
     }
 
-    ghost[Ghost::Red]->chase_strategy = &strategy1;
-    ghost[Ghost::Pink]->chase_strategy = &strategy2;
-    ghost[Ghost::Green]->chase_strategy = &strategy3;
-    ghost[Ghost::Yellow]->chase_strategy = &strategy4;
+    amongChar[AmongChar::Red]->chase_strategy = &strategy1;
+    amongChar[AmongChar::Pink]->chase_strategy = &strategy2;
+    amongChar[AmongChar::Green]->chase_strategy = &strategy3;
+    amongChar[AmongChar::Yellow]->chase_strategy = &strategy4;
 }
 
 void Game::start()
@@ -135,15 +135,15 @@ void Game::start()
     connect(powerball_flash_timer, SIGNAL(timeout()), this , SLOT(powerball_flash()));
     powerball_flash_timer->start(FLASH_INTERVAL);
 
-    pacman_timer = new QTimer(this);
-    connect(pacman_timer, SIGNAL(timeout()), this , SLOT(pacman_handler()));
-    pacman_timer->start(INTERVAL);
+    sheriff_timer = new QTimer(this);
+    connect(sheriff_timer, SIGNAL(timeout()), this , SLOT(sheriff_handler()));
+    sheriff_timer->start(INTERVAL);
 
-    for (int i = 0; i < Ghost::GhostNum; i++) {
-        ghost_timer[i] = new QTimer(this);
-        // Managed to pass ghost id to ghost_handler.
-        connect(ghost_timer[i], &QTimer::timeout, [=](){ghost_handler(i);} );
-        ghost_timer[i]->start(NORMAL_INTERVAL);
+    for (int i = 0; i < AmongChar::amongCharNum; i++) {
+        amongChar_timer[i] = new QTimer(this);
+        // Managed to pass amongChar id to amongChar_handler.
+        connect(amongChar_timer[i], &QTimer::timeout, [=](){amongChar_handler(i);} );
+        amongChar_timer[i]->start(NORMAL_INTERVAL);
     }
 }
 
@@ -151,10 +151,10 @@ void Game::start()
 void Game::stop()
 {
     player->stop();
-    pacman_timer->stop();
+    sheriff_timer->stop();
     powerball_flash_timer->stop();
-    for (int i = 0; i < Ghost::GhostNum; i++) {
-        ghost_timer[i]->stop();
+    for (int i = 0; i < AmongChar::amongCharNum; i++) {
+        amongChar_timer[i]->stop();
     }
 
 }
@@ -180,9 +180,9 @@ void Game::powerball_flash()
     }
 }
 
-void Game::pacman_handler()
+void Game::sheriff_handler()
 {
-    pacman->move();
+    sheriff->move();
     if (stat == Win) {
         stop();
     }
@@ -190,18 +190,18 @@ void Game::pacman_handler()
 }
 
 
-void Game::ghost_handler(int ghost_id)
+void Game::amongChar_handler(int amongChar_id)
 {
-    ghost[ghost_id]->move();
+    amongChar[amongChar_id]->move();
     if (stat == Lose) {
         stop();
     }
 }
 
 
-void Game::pacman_next_direction(GameObject::Dir d)
+void Game::sheriff_next_direction(GameObject::Dir d)
 {
-    pacman->set_next_dir(d);
+    sheriff->set_next_dir(d);
 
 
 }
@@ -221,9 +221,9 @@ Game::~Game()
         delete[] map[i];
     }
     delete[] map;
-    delete pacman_timer;
+    delete sheriff_timer;
     delete powerball_flash_timer;
-    for (int i = 0; i < Ghost::GhostNum; i++) {
-        delete ghost_timer[i];
+    for (int i = 0; i < AmongChar::amongCharNum; i++) {
+        delete amongChar_timer[i];
     }
 }
