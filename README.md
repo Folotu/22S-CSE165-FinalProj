@@ -1,4 +1,4 @@
-# 22S-CSE165-FinalProj
+# 22S-CSE165-FinalProject
 Our Implementation of the 1980’s hit arcade game “Pac-Man”, with our spin to it. 
 A Pacman X Among Us Collaboration. 
 
