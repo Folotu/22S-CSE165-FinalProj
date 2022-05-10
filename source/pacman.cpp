@@ -1,61 +1,41 @@
 #include "game.h"
-#include <QMediaPlayer>
-#include <QAudioOutput>
 #define W (GameObject::Width)
 
 Pacman::Pacman() : GameObject(
-    GameObject::Pacman, QPixmap(":/game_objects/pacman/a3.png"))
+    GameObject::Pacman, QPixmap(":/game_objects/pacman/sheriff2.png"))
 {
     dir = Stop;
     next_dir = Stop;
     anim_index = 2;
-    anim[Right].push_back(QPixmap(":/game_objects/pacman/a1.png"));
-    anim[Right].push_back(QPixmap(":/game_objects/pacman/a2.png"));
-    anim[Right].push_back(QPixmap(":/game_objects/pacman/a3.png"));
-    anim[Right].push_back(QPixmap(":/game_objects/pacman/a4.png"));
-    anim[Right].push_back(QPixmap(":/game_objects/pacman/a5.png"));
-    anim[Right].push_back(QPixmap(":/game_objects/pacman/a6.png"));
-    anim[Right].push_back(QPixmap(":/game_objects/pacman/a5.png"));
-    anim[Right].push_back(QPixmap(":/game_objects/pacman/a4.png"));
-    anim[Right].push_back(QPixmap(":/game_objects/pacman/a3.png"));
-    anim[Right].push_back(QPixmap(":/game_objects/pacman/a2.png"));
+    anim[Right].push_back(QPixmap(":/game_objects/pacman/sheriff2.png"));
+    anim[Right].push_back(QPixmap(":/game_objects/pacman/right1.png"));
+    anim[Right].push_back(QPixmap(":/game_objects/pacman/right2.png"));
+    anim[Right].push_back(QPixmap(":/game_objects/pacman/right1.png"));
+    anim[Right].push_back(QPixmap(":/game_objects/pacman/right3.png"));
 
-    anim[Up].push_back(QPixmap(":/game_objects/pacman/a1.png"));
-    anim[Up].push_back(QPixmap(":/game_objects/pacman/b2.png"));
-    anim[Up].push_back(QPixmap(":/game_objects/pacman/b3.png"));
-    anim[Up].push_back(QPixmap(":/game_objects/pacman/b4.png"));
-    anim[Up].push_back(QPixmap(":/game_objects/pacman/b5.png"));
-    anim[Up].push_back(QPixmap(":/game_objects/pacman/b6.png"));
-    anim[Up].push_back(QPixmap(":/game_objects/pacman/b5.png"));
-    anim[Up].push_back(QPixmap(":/game_objects/pacman/b4.png"));
-    anim[Up].push_back(QPixmap(":/game_objects/pacman/b3.png"));
-    anim[Up].push_back(QPixmap(":/game_objects/pacman/b2.png"));
 
-    anim[Left].push_back(QPixmap(":/game_objects/pacman/a1.png"));
-    anim[Left].push_back(QPixmap(":/game_objects/pacman/c2.png"));
-    anim[Left].push_back(QPixmap(":/game_objects/pacman/c3.png"));
-    anim[Left].push_back(QPixmap(":/game_objects/pacman/c4.png"));
-    anim[Left].push_back(QPixmap(":/game_objects/pacman/c5.png"));
-    anim[Left].push_back(QPixmap(":/game_objects/pacman/c6.png"));
-    anim[Left].push_back(QPixmap(":/game_objects/pacman/c5.png"));
-    anim[Left].push_back(QPixmap(":/game_objects/pacman/c4.png"));
-    anim[Left].push_back(QPixmap(":/game_objects/pacman/c3.png"));
-    anim[Left].push_back(QPixmap(":/game_objects/pacman/c2.png"));
+    anim[Up].push_back(QPixmap(":/game_objects/pacman/sheriff2.png"));
+    anim[Up].push_back(QPixmap(":/game_objects/pacman/up1.png"));
+    anim[Up].push_back(QPixmap(":/game_objects/pacman/up2.png"));
+    anim[Up].push_back(QPixmap(":/game_objects/pacman/up1.png"));
+    anim[Up].push_back(QPixmap(":/game_objects/pacman/up3.png"));
 
-    anim[Down].push_back(QPixmap(":/game_objects/pacman/a1.png"));
-    anim[Down].push_back(QPixmap(":/game_objects/pacman/d2.png"));
-    anim[Down].push_back(QPixmap(":/game_objects/pacman/d3.png"));
-    anim[Down].push_back(QPixmap(":/game_objects/pacman/d4.png"));
-    anim[Down].push_back(QPixmap(":/game_objects/pacman/d5.png"));
-    anim[Down].push_back(QPixmap(":/game_objects/pacman/d6.png"));
-    anim[Down].push_back(QPixmap(":/game_objects/pacman/d5.png"));
-    anim[Down].push_back(QPixmap(":/game_objects/pacman/d4.png"));
-    anim[Down].push_back(QPixmap(":/game_objects/pacman/d3.png"));
-    anim[Down].push_back(QPixmap(":/game_objects/pacman/d2.png"));
 
-    player = new QMediaPlayer();
-    audioOutput = new QAudioOutput();
-    player->setAudioOutput(audioOutput);
+
+    anim[Left].push_back(QPixmap(":/game_objects/pacman/sheriff2.png"));
+    anim[Left].push_back(QPixmap(":/game_objects/pacman/left1.png"));
+    anim[Left].push_back(QPixmap(":/game_objects/pacman/left2.png"));
+    anim[Left].push_back(QPixmap(":/game_objects/pacman/left1.png"));
+    anim[Left].push_back(QPixmap(":/game_objects/pacman/left3.png"));
+
+
+
+    anim[Down].push_back(QPixmap(":/game_objects/pacman/sheriff2.png"));
+    anim[Down].push_back(QPixmap(":/game_objects/pacman/down1.png"));
+    anim[Down].push_back(QPixmap(":/game_objects/pacman/down2.png"));
+    anim[Down].push_back(QPixmap(":/game_objects/pacman/down1.png"));
+    anim[Down].push_back(QPixmap(":/game_objects/pacman/down3.png"));
+
 
 }
 
@@ -102,20 +82,15 @@ void Pacman::moveright()
 
 void Pacman::eat_ball(int __y, int __x)
 {
-
     GameObject *obj = game->map[__y][__x];
     switch (obj->get_type()) {
     case Ball:
         game->score += obj->get_score();
         game->ball_num--;
-        player->setSource(QUrl("qrc:/audio/AmongUsTask_complete.wav"));
-        player->play();
         break;
     case PowerBall:
         game->score += obj->get_score();
         game->ball_num--;
-        player->setSource(QUrl("qrc:/audio/AmongUSPowerUp.wav"));
-        player->play();
         for (int i = 0; i < game->powerball.size(); i++) {
             if (game->powerball.at(i) == obj) {
                 game->powerball.remove(i);
@@ -128,7 +103,6 @@ void Pacman::eat_ball(int __y, int __x)
                 game->ghost[i]->status = Ghost::Panic;
                 game->ghost[i]->panic_time = PANNIC_TIME;
                 game->ghost_timer[i]->setInterval(PANNIC_INTERVAL);
-
             }
         }
         break;
@@ -138,7 +112,6 @@ void Pacman::eat_ball(int __y, int __x)
 
     /* Pacman eat a ball, and
      * fill the previous block with blank. */
-
     QPixmap blankpix;
     game->map[_y][_x] = new GameObject(GameObject::Blank, blankpix);
     game->map[__y][__x] = this;
