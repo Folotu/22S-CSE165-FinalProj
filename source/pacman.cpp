@@ -1,4 +1,7 @@
 #include "game.h"
+#include <QMediaPlayer>
+#include <QAudioOutput>
+
 #define W (GameObject::Width)
 
 Pacman::Pacman() : GameObject(
@@ -36,6 +39,9 @@ Pacman::Pacman() : GameObject(
     anim[Down].push_back(QPixmap(":/game_objects/pacman/down1.png"));
     anim[Down].push_back(QPixmap(":/game_objects/pacman/down3.png"));
 
+    player = new QMediaPlayer();
+    audioOutput = new QAudioOutput();
+    player->setAudioOutput(audioOutput);
 
 }
 
@@ -87,10 +93,14 @@ void Pacman::eat_ball(int __y, int __x)
     case Ball:
         game->score += obj->get_score();
         game->ball_num--;
+        player->setSource(QUrl("qrc:/audio/AmongUsTask_complete.wav"));
+        player->play();
         break;
     case PowerBall:
         game->score += obj->get_score();
         game->ball_num--;
+        player->setSource(QUrl("qrc:/audio/AmongUSPowerUp.wav"));
+        player->play();
         for (int i = 0; i < game->powerball.size(); i++) {
             if (game->powerball.at(i) == obj) {
                 game->powerball.remove(i);
