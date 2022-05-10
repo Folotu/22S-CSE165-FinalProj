@@ -5,27 +5,6 @@
         <file>game_objects/map_objects/gate.png</file>
         <file>game_objects/map_objects/map.txt</file>
         <file>game_objects/map_objects/power_ball.png</file>
-        <file>game_objects/pacman/a1.png</file>
-        <file>game_objects/pacman/a2.png</file>
-        <file>game_objects/pacman/a3.png</file>
-        <file>game_objects/pacman/a4.png</file>
-        <file>game_objects/pacman/a5.png</file>
-        <file>game_objects/pacman/a6.png</file>
-        <file>game_objects/pacman/b2.png</file>
-        <file>game_objects/pacman/b3.png</file>
-        <file>game_objects/pacman/b4.png</file>
-        <file>game_objects/pacman/b5.png</file>
-        <file>game_objects/pacman/b6.png</file>
-        <file>game_objects/pacman/c2.png</file>
-        <file>game_objects/pacman/c3.png</file>
-        <file>game_objects/pacman/c4.png</file>
-        <file>game_objects/pacman/c5.png</file>
-        <file>game_objects/pacman/c6.png</file>
-        <file>game_objects/pacman/d2.png</file>
-        <file>game_objects/pacman/d3.png</file>
-        <file>game_objects/pacman/d4.png</file>
-        <file>game_objects/pacman/d5.png</file>
-        <file>game_objects/pacman/d6.png</file>
         <file>game_objects/map_objects/wall.png</file>
         <file>game_objects/ghosts/amongRedDown1.png</file>
         <file>game_objects/ghosts/amongRedDown2.png</file>
@@ -62,5 +41,19 @@
         <file>game_objects/ghosts/blueGhost1.png</file>
         <file>game_objects/ghosts/blueGhost2.png</file>
         <file>game_objects/ghosts/runEyes.png</file>
+        <file>game_objects/pacman/down1.png</file>
+        <file>game_objects/pacman/down2.png</file>
+        <file>game_objects/pacman/down3.png</file>
+        <file>game_objects/pacman/left1.png</file>
+        <file>game_objects/pacman/left2.png</file>
+        <file>game_objects/pacman/left3.png</file>
+        <file>game_objects/pacman/right1.png</file>
+        <file>game_objects/pacman/right2.png</file>
+        <file>game_objects/pacman/right3.png</file>
+        <file>game_objects/pacman/sheriff.png</file>
+        <file>game_objects/pacman/sheriff2.png</file>
+        <file>game_objects/pacman/up1.png</file>
+        <file>game_objects/pacman/up2.png</file>
+        <file>game_objects/pacman/up3.png</file>
     </qresource>
 </RCC>
